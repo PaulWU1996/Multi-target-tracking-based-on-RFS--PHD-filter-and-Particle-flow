@@ -116,33 +116,48 @@
 # redistribute it and/or modify it under the terms of this licence, for 
 # personal and non-commercial use and research purpose. 
 
+import os
+
 class Environment:
     def __init__(self):
         self.ospa_c = 40       # the parameter c of the OSPA
         self.ospa_p = 1        # the parameter p of the OSPA
-        self.initvel = 4       # the initial value of the vel 
+        self.initvel = 4       # the initial value of the vel
 
         self.sigma = 50        # noise of variance
         self.sigma_scale = 0.1 # variance of the noise of the scale parameter
 
         self.Wk_resample     =   0;
-self.kflag           =   'EKF1';%'EKF1','regularized_identity',...'none'; % the method used to estimate the prior covariance.
-self.resample        =   true;
-self.redraw		  =   true;
-self.use_cluster  = false;
-self.maxilikeSAP	  =   200;
-self.maxilikemode    =   'a';
-self.nTrial		  =   5;
-self.bins            =   16;
-self.weight_euclidean = 0.25; % the weight of Euclidean distances when performing clustering using 'euclidean_slope'.
-self.nParticleCluster = 100;% Number of particle clusters used to calculate the slope in the LEDH-variant algorithms.
-self.Neff_thresh_ratio = 0.5;
-self.nParticle = 50;
-self.clutter = 2;
-self.detect  = 0.99; 
-self.lambda_range = linspace(0,1,29);
+# #以下部分是否要放入构造函数里？
+# self.kflag           =   'EKF1';%'EKF1','regularized_identity',...'none'; % the method used to estimate the prior covariance.
+# self.resample        =   true;
+# self.redraw		  =   true;
+# self.use_cluster  = false;
+# self.maxilikeSAP	  =   200;
+# self.maxilikemode    =   'a';
+# self.nTrial		  =   5;
+# self.bins            =   16;
+# self.weight_euclidean = 0.25; % the weight of Euclidean distances when performing clustering using 'euclidean_slope'.
+# self.nParticleCluster = 100;% Number of particle clusters used to calculate the slope in the LEDH-variant algorithms.
+# self.Neff_thresh_ratio = 0.5;
+# self.nParticle = 50;
+# self.clutter = 2;
+# self.detect  = 0.99;
+# self.lambda_range = linspace(0,1,29);
+#
+# def init(algorithms = "")
+#     if not algorithms:
+#         return
+#     if
 
-def init(algorithms = "")
-    if not algorithms:
-        return 
-    if 
+# Path problem
+path_lib=['ekfukf','particle_filter','particle_flow',
+          'SmHMC','plotting','tools'
+          'SMCPHD','Acoustic_Example','results',
+          'Acoustic_Example']
+for path in path_lib:
+    if not os.path.exists(path):
+        os.mkdir(path)
+
+env=Environment
+print(env.ospa_c)
